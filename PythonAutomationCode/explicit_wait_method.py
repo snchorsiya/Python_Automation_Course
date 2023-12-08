@@ -37,10 +37,19 @@ myinfo = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()='My 
 myinfo.click()
 # driver.find_element(By.XPATH, "//*[text()='My Info']").click()
 
-uname = wait.until(EC.visibility_of_element_located((By.XPATH, "(//h6[@class='oxd-text oxd-text--h6 --strong'])")))
-name = uname.text
+time.sleep(3)
+wait.until(EC.visibility_of_element_located((By.XPATH, "//div[@class='orangehrm-edit-employee-name']")))
+name = driver.find_element(By.XPATH, "//div[@class='orangehrm-edit-employee-name']")
 # name = driver.find_element(By.XPATH, "(//h6[@class='oxd-text oxd-text--h6 --strong'])").text
-print(name)
+print(name.text)
 
 admin = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()='Admin']")))
 admin.click()
+
+webTable = driver.find_elements(By.XPATH, "//div[@class = 'oxd-table-body']")
+tableCount = len(webTable)
+print(tableCount)
+
+for web_table in webTable:
+    username = web_table.text
+    print(username)
